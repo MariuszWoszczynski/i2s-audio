@@ -1,6 +1,5 @@
 dashboard_import:
-  #package_import_url: github://MariuszWoszczynski/i2S-audio/i2S-audio.yaml@main
-  package_import_url: github://MariuszWoszczynski/WMBUS-reader/WMBUS-reader.yaml@main
+  package_import_url: github://MariuszWoszczynski/i2S-audio/i2S-audio.yaml@main
   import_full_config: true
 
 substitutions:
