@@ -28,7 +28,6 @@ api:
 
 ota:
   - platform: esphome
-    password: "cbbeef6b50948f30d32c0192298b9afc"
 
 wifi:
   ssid: !secret wifi_ssid
@@ -37,13 +36,12 @@ wifi:
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "I2S-Audio Fallback Hotspot"
-    password: "A7JyVq5BNrSW"
 
 captive_portal:
 
 i2s_audio:
   - id: i2s_in
-    i2s_lrclk_pin: GPIO01 #WS #LCK
+    i2s_lrclk_pin: GPIO01 
     i2s_bclk_pin: GPIO03
 
 media_player:
@@ -52,6 +50,6 @@ media_player:
     id: media_player_speaker
     i2s_audio_id: i2s_in
     dac_type: external
-    i2s_dout_pin: GPIO02   #  DIN Pin of the MAX98357A Audio Amplifier
+    i2s_dout_pin: GPIO02
     mode: stereo
 
