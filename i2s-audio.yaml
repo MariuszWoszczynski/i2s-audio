@@ -1,0 +1,57 @@
+dashboard_import:
+  package_import_url: github://MariuszWoszczynski/i2S-audio/i2S-audio.yaml@main
+  import_full_config: true
+
+substitutions:
+  name: "i2s-audio"
+  friendly_name: "I2S Audio"
+
+esphome:
+  name: "${name}"
+  friendly_name: "${friendly_name}"
+  project:
+    name: esphome.i2s_audio
+    version: "1.0"
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "wV38CBE3cLp2yvLvdCmByxShqab4DDZvrzUEhYnsk6c="
+
+ota:
+  - platform: esphome
+    password: "cbbeef6b50948f30d32c0192298b9afc"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "I2S-Audio Fallback Hotspot"
+    password: "A7JyVq5BNrSW"
+
+captive_portal:
+
+i2s_audio:
+  - id: i2s_in
+    i2s_lrclk_pin: GPIO01 #WS #LCK
+    i2s_bclk_pin: GPIO03
+
+media_player:
+  - platform: i2s_audio
+    name: "esp_speaker"
+    id: media_player_speaker
+    i2s_audio_id: i2s_in
+    dac_type: external
+    i2s_dout_pin: GPIO02   #  DIN Pin of the MAX98357A Audio Amplifier
+    mode: stereo
+
